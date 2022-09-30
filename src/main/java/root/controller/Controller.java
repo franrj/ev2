@@ -50,6 +50,8 @@ public class Controller extends HttpServlet {
         cl.setEdad(Integer.parseInt(strEdad));
         cl.setCorreo(StrCorreo);
         
+        
+        
         //dao
         ClienteJpaController dao = new ClienteJpaController();
         try {

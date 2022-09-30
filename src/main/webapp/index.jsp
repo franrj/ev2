@@ -16,16 +16,17 @@
         
         <form action="controller" method="POST">
             
-            id:
-            <input type="text" name="id" value="" />
-            nombre:
-            <input type="text" name="nombre" value="" />
-            apellido:
-            <input type="text" name="apellido" value="" />
-            edad:
-            <input type="text" name="edad" value="" />
-            correo:
-            <input type="text" name="correo" value="" />
+            
+            <p>Id:</p>
+            <input type="text" name="id" value="" /><br>
+            <p>Nombre:</p>
+            <input type="text" name="nombre" value="" /><br>
+            <p>Apellido:</p>
+            <input type="text" name="apellido" value="" /><br>
+            <p>Edad:</p>
+            <input type="text" name="edad" value="" /><br>
+            <p>Correo:</p>
+            <input type="text" name="correo" value="" /><br><br>
             
             <input type="submit" value="enviar" />
         </form>
