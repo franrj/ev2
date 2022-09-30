@@ -1,0 +1,6 @@
+root\controller\Controller.class
+root\model\dao\exceptions\IllegalOrphanException.class
+root\model\dao\ClienteJpaController.class
+root\model\dao\exceptions\NonexistentEntityException.class
+root\model\dao\exceptions\PreexistingEntityException.class
+root\model\entities\Cliente.class
