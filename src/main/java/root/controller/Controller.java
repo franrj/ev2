@@ -35,6 +35,20 @@ public class Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        String crea ="";
+        String edita = "";
+        String borra = "";
+
+        switch (expression) {
+            case x:
+                // code block
+                break;
+            case y:
+                // code block
+                break;
+            default:
+            // code block
+        }
         
         String strId = request.getParameter("id");
         String strNombre = request.getParameter("nombre");
@@ -49,9 +63,7 @@ public class Controller extends HttpServlet {
         cl.setApellido(strApellido);
         cl.setEdad(Integer.parseInt(strEdad));
         cl.setCorreo(StrCorreo);
-        
-        
-        
+
         //dao
         ClienteJpaController dao = new ClienteJpaController();
         try {
