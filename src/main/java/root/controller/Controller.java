@@ -34,47 +34,79 @@ public class Controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String crea ="";
-        String edita = "";
-        String borra = "";
 
-        switch (expression) {
-            case x:
-                // code block
-                break;
-            case y:
-                // code block
-                break;
-            default:
-            // code block
-        }
+        String test = request.getParameter("accion"); //auxiliar
         
+        //datos recuperados del formulario
         String strId = request.getParameter("id");
         String strNombre = request.getParameter("nombre");
         String strApellido = request.getParameter("apellido");
         String strEdad = request.getParameter("edad");
         String StrCorreo = request.getParameter("correo");
-        
-        //entiti
-        Cliente cl = new Cliente();
-        cl.setId(Integer.parseInt(strId));
-        cl.setNombre(strNombre);
-        cl.setApellido(strApellido);
-        cl.setEdad(Integer.parseInt(strEdad));
-        cl.setCorreo(StrCorreo);
 
-        //dao
-        ClienteJpaController dao = new ClienteJpaController();
-        try {
-            dao.create(cl);
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        switch (test) {
+            case "enviar":
+
+                //entitiy
+                Cliente cl = new Cliente();
+                cl.setId(Integer.parseInt(strId));
+                cl.setNombre(strNombre);
+                cl.setApellido(strApellido);
+                cl.setEdad(Integer.parseInt(strEdad));
+                cl.setCorreo(StrCorreo);
+
+                //dao
+                ClienteJpaController dao = new ClienteJpaController();
+                try {
+                    dao.create(cl);
+                } catch (Exception ex) {
+                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                //salida
+                request.getRequestDispatcher("resultado.jsp").forward(request, response);
+
+                break;
+            case "editar":
+                
+                //entity
+                Cliente clEdit = new Cliente();
+                clEdit.setId(Integer.parseInt(strId));
+                clEdit.setNombre(strNombre);
+                clEdit.setApellido(strApellido);
+                clEdit.setEdad(Integer.parseInt(strEdad));
+                clEdit.setCorreo(StrCorreo);
+
+                //dao
+                ClienteJpaController daoEdit = new ClienteJpaController();
+                try {
+                    daoEdit.edit(clEdit);
+                } catch (Exception ex) {
+                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                //salida
+                request.getRequestDispatcher("resultado.jsp").forward(request, response);
+
+                break;
+            case "borrar":
+
+                
+                //dao
+                ClienteJpaController daoBorrar = new ClienteJpaController();
+                try {
+                    daoBorrar.destroy(Integer.parseInt(strId));
+                } catch (Exception ex) {
+                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                //salida
+                request.getRequestDispatcher("resultado.jsp").forward(request, response);
+
+                break;
+
         }
-        
-        
-        //salida
-        request.getRequestDispatcher("resultado.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
